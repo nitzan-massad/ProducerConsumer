@@ -65,7 +65,7 @@ namespace ProducerConsumer
         {
             using (var dbContext = new ProducerConsumerContext())
             {
-                List<Task> tasks = dbContext.Tasks.ToList().Where(task => task.ConsumerID == consumer).OrderBy(task => task.ModificationTime).Take(10).ToList();
+                List<Task> tasks = dbContext.Tasks.ToList().Where(task => task.ConsumerID == consumer).OrderByDescending(task => task.ModificationTime).Take(10).ToList();
                 return tasks.ToList();
             }
         }
